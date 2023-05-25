@@ -1,35 +1,49 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {Form, Button} from 'react-bootstrap';
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [todoList, setTodoList] = useState([])
+  const [todo, setTodo] = useState('')
+  const addTodo = () => {
+    setTodoList(prevTodoList => [...prevTodoList, todo]) // ekleye basınca öncekiyazılanlarla todo ile eklenen ynaiyi birlikte listeleyecek.
+    setTodo('') //butona bastıktan sonra ınput temizlensin diye
+  }
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className=" baslik d-flex flex-column justify-contect-center align-items-center">
+      <h1>ToDo List</h1>
+      <div className='d-flex w-50'>
+        <Form.Control 
+          className='w-70 mt-3'
+          placeholder="Add Todo..."
+          value={todo} //yazıldığında ve butona basıldıgındatekrar ilk haline dönemsi için değerini ilk todoya eşitliyorum
+          onChange={(e) => setTodo(e.target.value)} //e kullanıcının anlık yaptıgı değişiklikleri yakalamak, anlık değşim olan olaylar anlamında yani güncellendiğinde yenisi set.. olacak ve ınputta yazılanlar gözükecek.
+        />
+        <Button className='ms-4 mt-3' onClick={() => addTodo()}>Add</Button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+        <div className='mt-5 w-50'>
+          {
+            todoList.map(
+              todoItem => <div key={todoItem} className='d-flex justify-contect-between '>
+                <div className='d-flex'>
+                  <Form.Check // prettier-ignore
+                  type={'checkbox'}
+                  className='me-4'
+                />
+                <label>
+                  {todoItem}
+                </label>
+                  </div>
+                <div>
+                  ...
+              </div>
+              </div>
+            )
+          }
+        </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
