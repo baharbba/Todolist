@@ -2,10 +2,11 @@
 import { useState } from 'react'
 import './App.css'
 import { Form, Button } from 'react-bootstrap';
-import { edit as ReactComponent } from './assets/edit.png';
-import { ReactComponent as save } from './assets/save.png';
-// eslint-disable-next-line no-unused-vars
-import { ReactComponent as trashicon } from './assets/trashicon.png';
+
+//import { ReactComponent as SaveIcon } from "./assets/SaveIcon.svg";
+import SaveIcon from './assets/SaveIcon.svg';
+import EditIcon from './assets/EditIcon.svg';
+import TrashIcon from './assets/TrashIcon.svg';
 
 
 function App() {
@@ -40,10 +41,10 @@ function App() {
                   {todoItem}
                 </label>
                   </div>
-                <div>
-                  <trashicon width={25} height={25} />
-                  <save width={25} height={25}/>
-                  <edit width={25} height={25}/>
+                <div style={{marginLeft:'500px'}}>
+                  <img src={SaveIcon} alt="Save Icon" width={25} height={25} style={{cursor:'pointer'}} className='me-2' />
+                <img src={EditIcon} alt="Edit Icon" width={25} height={25} style={{cursor:'pointer'}} className='me-2' />
+                <img src={TrashIcon} alt="Trash Icon" width={25} height={25} style={{cursor:'pointer'}}/>
               </div>
               </div>
             )
