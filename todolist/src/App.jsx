@@ -1,6 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react'
 import './App.css'
-import {Form, Button} from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
+import { edit as ReactComponent } from './assets/edit.png';
+import { ReactComponent as save } from './assets/save.png';
+// eslint-disable-next-line no-unused-vars
+import { ReactComponent as trashicon } from './assets/trashicon.png';
 
 
 function App() {
@@ -36,7 +41,9 @@ function App() {
                 </label>
                   </div>
                 <div>
-                  ...
+                  <trashicon width={25} height={25} />
+                  <save width={25} height={25}/>
+                  <edit width={25} height={25}/>
               </div>
               </div>
             )
